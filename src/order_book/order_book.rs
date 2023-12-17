@@ -1,6 +1,6 @@
 use super::fill::Fill;
 use super::order::Order;
-use super::order_queue::{OrderQueue, MatchResult};
+use super::order_queue::{MatchResult, OrderQueue};
 use super::side::Side;
 
 pub struct OrderBook {
@@ -19,12 +19,17 @@ impl OrderBook {
     pub fn handle(&self, order: Order) -> Vec<Fill> {
         match order.side {
             Side::Sell => {
-                let MatchResult{maybe_order, maybe_fills } = self.bid_queue.match_order(order).clone();
+                let MatchResult {
+                    maybe_order,
+                    maybe_fills,
+                } = self.bid_queue.match_order(order).clone();
                 maybe_fills
             }
-                ,
             Side::Buy => {
-                let MatchResult{maybe_order, maybe_fills } = self.bid_queue.match_order(order).clone();
+                let MatchResult {
+                    maybe_order,
+                    maybe_fills,
+                } = self.bid_queue.match_order(order).clone();
                 maybe_fills
             }
         }
@@ -34,14 +39,8 @@ impl OrderBook {
 mod test {
 
     #[test]
-    fn test_correct_queue_sell_order() {
-
-    }
-
+    fn test_correct_queue_sell_order() {}
 
     #[test]
-    fn test_correct_queue_buy_order() {
-        
-    }
-
+    fn test_correct_queue_buy_order() {}
 }

@@ -30,7 +30,7 @@ impl Fill {
                 side: side.opposite().clone(),
                 size: size,
                 price: price,
-                counterpart: trader.clone()
+                counterpart: trader.clone(),
             },
         )
     }
